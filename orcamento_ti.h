@@ -12,7 +12,7 @@
 #include <QInputDialog>
 #include <QTableView>
 
-#include  <QSqlDriver>
+#include <QSqlDriver>
 #include <QStatusBar>
 #include <QSqlQuery>
 #include <QSqlError>
@@ -30,11 +30,9 @@
 #include <QUrl>
 #include <QDir>
 
-
+#ifdef _WIN32
 #include <ActiveQt/QAxObject>
-//#include <QAxWidget>
-//#include <QAxBase>
-
+#endif
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -43,7 +41,7 @@ class orcamento_ti;
 QT_END_NAMESPACE
 
 
-//---
+// ---------------- EMAIL MANAGER ----------------
 class EmailManager {
 public:
     struct EmailData {
@@ -56,22 +54,20 @@ public:
 
     QString vi_t = "1";
 
+#ifdef _WIN32
     static bool enviarPeloOutlook(const EmailData &dados) {
-        // Inicializa o Outlook
         QAxObject* outlook = new QAxObject("Outlook.Application", nullptr);
         if (!outlook || outlook->isNull()) {
             qDebug() << "Erro: Outlook não instalado ou falha ao iniciar.";
             return false;
         }
 
-        // Cria o item de e-mail (0 = olMailItem)
         QAxObject* mailItem = outlook->querySubObject("CreateItem(int)", 0);
         if (!mailItem) {
             delete outlook;
             return false;
         }
 
-        // Configura o anexo se existir
         if (!dados.caminhoAnexo.isEmpty()) {
             QAxObject* attachments = mailItem->querySubObject("Attachments");
             if (attachments) {
@@ -79,27 +75,28 @@ public:
             }
         }
 
-        // Busca a assinatura (reaproveitando sua lógica)
         QString assinatura = buscarAssinatura(dados.vendedorId);
 
-        // Define propriedades
         mailItem->setProperty("Subject", dados.assunto);
         mailItem->setProperty("HTMLBody", dados.corpoHtml + "<br>" + assinatura);
 
-        // Adiciona destinatário
         QAxObject* recipients = mailItem->querySubObject("Recipients");
         if (recipients) {
             recipients->dynamicCall("Add(const QString&)", dados.destinatario);
         }
 
-        // Exibe para o usuário revisar
         mailItem->dynamicCall("Display()");
 
-        // Limpeza
         delete mailItem;
         delete outlook;
         return true;
     }
+#else
+    static bool enviarPeloOutlook(const EmailData &) {
+        qDebug() << "Envio de email não suportado no Linux";
+        return false;
+    }
+#endif
 
 private:
     static QString buscarAssinatura(const QString &vendedorId) {
@@ -115,53 +112,36 @@ private:
 
         if (arquivos.isEmpty()) return "";
 
-        // Aqui você chamaria sua função 'pegarAssinaturaEmail' existente
-        // return pegarAssinaturaEmail(arquivos.first());
         return "--- Assinatura Padrão ---";
     }
 };
 
-//#endif // EMAILMANAGER_H
 
-//----
-
-
+// ---------------- MAIN CLASS ----------------
 class orcamento_ti : public QMainWindow
 {
     Q_OBJECT
 
 public:
-
-
-    // struct SessaoUsuario {
-    //     QString usuario;
-    //     QString sigla;
-    //     QString regiao;
-    //     QString vendedor;
-    //     QString uf;
-    // };
-
     orcamento_ti(QWidget *parent = nullptr);
     ~orcamento_ti();
-
-
 
 private slots:
     QString identificarIPs();
     void on_bt_sair_clicked();
     void atualizarTi();
-    void configurarTabela() ;
+    void configurarTabela();
     void on_bt_novo_clicked();
     void on_bt_visualizarPDF_clicked();
-   QString pegarAssinaturaEmail(const QString& nome_assinatura);
+    QString pegarAssinaturaEmail(const QString& nome_assinatura);
     void on_actionAtividades_triggered();
     void on_actionCriar_Pedido_triggered();
     void on_bt_visualizar_clicked();
     void on_bt_ver_todos_clicked();
     void on_actionAtendente_triggered();
-    void  sem_transportadora();
+    void sem_transportadora();
     void selecionarTransportadora(const QModelIndex &index);
-    bool eventFilter(QObject *obj, QEvent *event) ;
+    bool eventFilter(QObject *obj, QEvent *event);
     void on_bt_prospects_clicked();
     void on_bt_catalogo_clicked();
     void on_actionPedidos_triggered();
@@ -181,7 +161,7 @@ private:
     Ui::orcamento_ti *ui;
     QSqlDatabase dbp;
     QSqlDatabase dbi;
-    QSqlDatabase dba;   //permite alteração nas tabelas do Protheus
+    QSqlDatabase dba;
 
     QSqlTableModel * m_dbpModel;
     QSqlTableModel * m_dbiModel;
@@ -189,10 +169,7 @@ private:
 
     QTableView *tv_transportadoras;
 
-
-
-    // --- DEFINIÇÃO DA ASSINATURA DA FUNÇÃO ---
     bool abrirConexao(QSqlDatabase &db, QString host, QString dbName, QString user, QString pass);
-
 };
+
 #endif // ORCAMENTO_TI_H
