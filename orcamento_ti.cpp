@@ -39,9 +39,3 @@ if(e_outlook=="CLAS"){
     delete mailItem;
     delete outlook;
 }
-
-#else
-
-qDebug() << "Envio de email não suportado no Linux";
-
-#endif
