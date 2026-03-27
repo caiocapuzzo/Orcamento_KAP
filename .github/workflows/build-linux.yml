@@ -39,14 +39,7 @@ jobs:
 
     - name: Create desktop file
       run: |
-        cat <<EOF > AppDir/orcamentoweb.desktop
-[Desktop Entry]
-Name=OrcamentoWeb
-Exec=orcamentoweb
-Icon=orcamentoweb
-Type=Application
-Categories=Utility;
-EOF
+        echo -e "[Desktop Entry]\nName=OrcamentoWeb\nExec=orcamentoweb\nIcon=orcamentoweb\nType=Application\nCategories=Utility;" > AppDir/orcamentoweb.desktop
 
     - name: Build AppImage
       run: |
