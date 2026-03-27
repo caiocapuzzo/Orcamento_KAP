@@ -48,6 +48,9 @@ Categories=Utility;" > AppDir/orcamentoweb.desktop
 
     - name: Build AppImage
       run: |
+        export PATH=$PWD:$PATH
+        export LINUXDEPLOY_PLUGIN_QT=./linuxdeploy-plugin-qt-x86_64.AppImage
+
         ./linuxdeploy-x86_64.AppImage \
           --appdir AppDir \
           --executable AppDir/usr/bin/orcamentoweb \
