@@ -1341,8 +1341,9 @@ void orcamento_ti::on_bt_visualizarPDF_clicked()
             delete mailItem;
             delete outlook;
         }
+	else
 #endif
-        else if(e_outlook=="novo"){
+         if(e_outlook=="novo"){
             qDebug()<< "aqui2";
         }
     }
