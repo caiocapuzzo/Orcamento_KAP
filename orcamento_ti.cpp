@@ -1312,69 +1312,7 @@ if(e_outlook=="CLAS"){
         }
     }
 
-    mailItem->setProperty("Subject", assunto_email);
-    mailItem->setProperty("HTMLBody", texto);
-
-    QAxObject* recipients = mailItem->querySubObject("Recipients");
-    recipients->dynamicCall("Add(QString)", emailcli);
-
-    mailItem->dynamicCall("Display()");
-
-    delete mailItem;
-    delete outlook;
-}
-#endif
-
-                           return ;
-            }
-
-            // Define as propriedades do e-mail
-            QString attachmentPath = "C:/Cotacoes/"+nome; // Caminho para o anexo
-
-            if (!attachmentPath.isEmpty()) {
-                QAxObject* attachments = mailItem->querySubObject("Attachments");
-                if (attachments) {
-                    attachments->dynamicCall("Add(const QString&)", attachmentPath);
-                } else {
-                    qDebug() << "Não foi possível acessar os anexos.";
-                }
-            }
-
-            //QString nome_assinatura = UsuarioRede.trimmed() + ".htm";
-            QString caminhoAssinatura;
-            if(e_vendedor=="000001"){
-                caminhoAssinatura = QDir::homePath() +"/AppData/Roaming/Microsoft/Signatures/";
-                //caminhoAssinatura = "%userprofile%/appdata/Roaming/Microsoft/Signatures/";
-            }else{
-                caminhoAssinatura = "C:/Orcamento/";
-            }
-            QDir dirAssinatura(caminhoAssinatura);
-            QStringList filtros;
-            filtros << "*.htm"; // Filtra apenas arquivos com a extensão ".htm"
-            dirAssinatura.setNameFilters(filtros);
-            QStringList arquivosAssinatura = dirAssinatura.entryList(QDir::Files);
-            QString nome_assinatura = arquivosAssinatura.first();
-            qDebug()<< "nome_assinatura "+nome_assinatura;
-            QString assinatura = pegarAssinaturaEmail(nome_assinatura);
-
-            if(assinatura.isEmpty()){
-                qDebug() << "Assinatura não encontrada.";
-            }
-
-            //mailItem->setProperty("To", emailcli);
-            mailItem->setProperty("Subject", assunto_email);
-            mailItem->setProperty("HTMLBody", texto + assinatura);
-
-            QAxObject* recipients = mailItem->querySubObject("Recipients");
-            recipients->dynamicCall("Add(QString)", emailcli);
-            mailItem->dynamicCall("Display()"); // Mostra o e-mail na tela para revisão
-            //mailItem->dynamicCall("Send()");  // Enviar o e-mail diretamente
-            qDebug() << "E-mail criado com sucesso.";
-
-            // Limpeza de memória
-            delete mailItem;
-            delete outlook;
-        }else if(e_outlook=="novo"){
+    
             qDebug()<< "aqui2";
         }
     }
