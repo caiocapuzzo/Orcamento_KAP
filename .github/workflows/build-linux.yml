@@ -12,23 +12,29 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Install Qt
+    - name: Install dependencies
       run: |
         sudo apt update
-        sudo apt install -y qt6-base-dev qt6-tools-dev-tools cmake
+        sudo apt install -y \
+          qt6-base-dev \
+          qt6-tools-dev-tools \
+          cmake \
+          wget \
+          file \
+          libxcb-cursor0
 
-    - name: Build
+    - name: Build project
       run: |
         mkdir build
         cd build
         cmake ..
         make -j$(nproc)
 
-    - name: Download linuxdeploy + Qt plugin
+    - name: Download linuxdeploy + plugin Qt
       run: |
         wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
         wget https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage
-        
+
         chmod +x linuxdeploy-x86_64.AppImage
         chmod +x linuxdeploy-plugin-qt-x86_64.AppImage
 
@@ -39,17 +45,29 @@ jobs:
 
     - name: Create desktop file
       run: |
-        echo -e "[Desktop Entry]\nName=OrcamentoWeb\nExec=orcamentoweb\nIcon=orcamentoweb\nType=Application\nCategories=Utility;" > AppDir/orcamentoweb.desktop
+        cat <<EOF > AppDir/orcamentoweb.desktop
+        [Desktop Entry]
+        Name=OrcamentoWeb
+        Exec=orcamentoweb
+        Icon=orcamentoweb
+        Type=Application
+        Categories=Utility;
+        EOF
+
+    - name: Create icon (dummy)
+      run: |
+        mkdir -p AppDir/usr/share/icons/hicolor/256x256/apps
+        touch AppDir/usr/share/icons/hicolor/256x256/apps/orcamentoweb.png
 
     - name: Build AppImage
       run: |
         export PATH=$PWD:$PATH
-        export LINUXDEPLOY_PLUGIN_QT=./linuxdeploy-plugin-qt-x86_64.AppImage
 
         ./linuxdeploy-x86_64.AppImage \
           --appdir AppDir \
           --executable AppDir/usr/bin/orcamentoweb \
           --desktop-file AppDir/orcamentoweb.desktop \
+          --icon-file AppDir/usr/share/icons/hicolor/256x256/apps/orcamentoweb.png \
           --plugin qt \
           --output appimage
 
