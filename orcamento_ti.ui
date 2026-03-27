@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>orcamento_ti</class>
+ <widget class="QMainWindow" name="orcamento_ti">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1168</width>
+    <height>754</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Tahoma</family>
+    <pointsize>10</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Orcamento WEB V 9.00   27/03/2026 </string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QTextEdit" name="txt_msg">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lb_qtde">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>40</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTableWidget" name="tw_excel">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="txt_cod_transp"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="bt_catalogo">
+        <property name="font">
+         <font>
+          <family>Tahoma</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Alt + C para abrir pasta dos catálogos</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>&amp;Catálogo</string>
+        </property>
+        <property name="shortcut">
+         <string>Alt+C</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="bt_ver_todos">
+        <property name="toolTip">
+         <string>Mostra todos os orçamentos</string>
+        </property>
+        <property name="text">
+         <string>Ver +</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="bt_prospects">
+        <property name="font">
+         <font>
+          <family>Tahoma</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Alt + P para adicionar/editar/ver prospect</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(170, 0, 255);
+background-color: rgb(229, 229, 255);</string>
+        </property>
+        <property name="text">
+         <string>&amp;Prospects</string>
+        </property>
+        <property name="shortcut">
+         <string>Alt+P</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="bt_visualizarPDF">
+        <property name="font">
+         <font>
+          <family>Tahoma</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Visualiza em PDF com imagem e abre o e-mail</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>Orçamento</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="bt_visualizar">
+        <property name="font">
+         <font>
+          <family>Tahoma</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Visualiza em PDF, mas sem imagem</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string> Visualizar</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="bt_novo">
+        <property name="font">
+         <font>
+          <family>Tahoma</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Alt + N para novo orçamento</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(0, 170, 0);
+background-color: rgb(236, 255, 225);
+</string>
+        </property>
+        <property name="text">
+         <string>&amp;Novo Orçamento</string>
+        </property>
+        <property name="shortcut">
+         <string>Alt+N</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="bt_editar">
+        <property name="font">
+         <font>
+          <family>Tahoma</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 170, 0); 
+background-color: rgb(255, 239, 217);
+</string>
+        </property>
+        <property name="text">
+         <string>Editar Orçamento</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="bt_duplicarOrcamento">
+        <property name="font">
+         <font>
+          <family>Tahoma</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Duplica atualizando os preços e as condições comerciais</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>Duplicar atualizando</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="bt_sair">
+        <property name="font">
+         <font>
+          <family>Tahoma</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="statusTip">
+         <string>Alt +S para sair</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 0, 0);
+background-color: rgb(255, 238, 230); </string>
+        </property>
+        <property name="text">
+         <string>&amp;Sair</string>
+        </property>
+        <property name="shortcut">
+         <string>Alt+S</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QTableWidget" name="tw_orcamentos">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>661</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1168</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuMenu">
+    <property name="title">
+     <string>Menu</string>
+    </property>
+    <addaction name="actionAjuda"/>
+    <addaction name="actionAtividades"/>
+    <addaction name="actionCriar_Pedido"/>
+    <addaction name="actionDeletar"/>
+    <addaction name="actionEstoque"/>
+    <addaction name="actionImportar_cod_Kap_X_cod_cli"/>
+    <addaction name="actionPedidos"/>
+    <addaction name="actionRela_o_de_Clientes"/>
+    <addaction name="actionRM"/>
+    <addaction name="actionExportar_Excel"/>
+    <addaction name="actionExportar_Excel_Orc"/>
+    <addaction name="actionPedidos_Abertos"/>
+   </widget>
+   <widget class="QMenu" name="menuLocalizar">
+    <property name="title">
+     <string>Localizar</string>
+    </property>
+    <addaction name="actionN_mero"/>
+   </widget>
+   <widget class="QMenu" name="menuFiltros">
+    <property name="title">
+     <string>Filtros</string>
+    </property>
+    <addaction name="actionAtendente"/>
+    <addaction name="actionC_digo_do_cliente"/>
+    <addaction name="actionFantasia"/>
+    <addaction name="actionEstado"/>
+    <addaction name="actionProspect"/>
+    <addaction name="actionE_mail_do_cliente"/>
+    <addaction name="actionRegi_o"/>
+    <addaction name="actionLimpar_filtro"/>
+   </widget>
+   <addaction name="menuMenu"/>
+   <addaction name="menuLocalizar"/>
+   <addaction name="menuFiltros"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionAjuda">
+   <property name="text">
+    <string>Ajuda</string>
+   </property>
+  </action>
+  <action name="actionAtividades">
+   <property name="text">
+    <string>Atividades</string>
+   </property>
+  </action>
+  <action name="actionCriar_Pedido">
+   <property name="text">
+    <string>Criar Pedido</string>
+   </property>
+  </action>
+  <action name="actionDeletar">
+   <property name="text">
+    <string>Deletar</string>
+   </property>
+  </action>
+  <action name="actionEstoque">
+   <property name="text">
+    <string>Estoque</string>
+   </property>
+  </action>
+  <action name="actionImportar_cod_Kap_X_cod_cli">
+   <property name="text">
+    <string>Importar cod.Kap X cod.cli</string>
+   </property>
+  </action>
+  <action name="actionPedidos">
+   <property name="text">
+    <string>Pedidos</string>
+   </property>
+  </action>
+  <action name="actionRela_o_de_Clientes">
+   <property name="text">
+    <string>Relação de Clientes</string>
+   </property>
+  </action>
+  <action name="actionRM">
+   <property name="text">
+    <string>RM</string>
+   </property>
+  </action>
+  <action name="actionExportar_Excel">
+   <property name="text">
+    <string>Exportar Excel</string>
+   </property>
+  </action>
+  <action name="actionExportar_Excel_Orc">
+   <property name="text">
+    <string>Exportar Excel Orc.</string>
+   </property>
+  </action>
+  <action name="actionPedidos_Abertos">
+   <property name="text">
+    <string>Pedidos Abertos</string>
+   </property>
+  </action>
+  <action name="actionN_mero">
+   <property name="text">
+    <string>Número</string>
+   </property>
+  </action>
+  <action name="actionAtendente">
+   <property name="text">
+    <string>Atendente</string>
+   </property>
+  </action>
+  <action name="actionC_digo_do_cliente">
+   <property name="text">
+    <string>Código do cliente</string>
+   </property>
+  </action>
+  <action name="actionFantasia">
+   <property name="text">
+    <string>Fantasia</string>
+   </property>
+  </action>
+  <action name="actionEstado">
+   <property name="text">
+    <string>Estado</string>
+   </property>
+  </action>
+  <action name="actionProspect">
+   <property name="text">
+    <string>Prospect</string>
+   </property>
+  </action>
+  <action name="actionE_mail_do_cliente">
+   <property name="text">
+    <string>E-mail do cliente</string>
+   </property>
+  </action>
+  <action name="actionRegi_o">
+   <property name="text">
+    <string>Região</string>
+   </property>
+  </action>
+  <action name="actionLimpar_filtro">
+   <property name="text">
+    <string>Limpar filtro</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

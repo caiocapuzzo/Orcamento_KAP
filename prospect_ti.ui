@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>prospect_ti</class>
+ <widget class="QDialog" name="prospect_ti">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1450</width>
+    <height>696</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Prospects </string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="lb_qtde">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>40</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="bt_limpar_filtro">
+         <property name="text">
+          <string>Ver &amp;Todos</string>
+         </property>
+         <property name="shortcut">
+          <string>Alt+T</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="bt_pesquisar">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>Alt +f</string>
+         </property>
+         <property name="text">
+          <string>Filtrar nome &amp;Fantasia</string>
+         </property>
+         <property name="shortcut">
+          <string>Alt+F</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="bt_pesquisar_cnpj">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>Alt + C</string>
+         </property>
+         <property name="text">
+          <string>Filtrar &amp;CNPJ</string>
+         </property>
+         <property name="shortcut">
+          <string>Alt+C</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="bt_limpar_filtro_2">
+         <property name="text">
+          <string>&amp;Limpar Filtro</string>
+         </property>
+         <property name="shortcut">
+          <string>Alt+L</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="bt_novo">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>Alt + N</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 170, 0);
+background-color: rgb(236, 255, 225);</string>
+         </property>
+         <property name="text">
+          <string>&amp;Novo Prospect</string>
+         </property>
+         <property name="shortcut">
+          <string>Alt+N</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="bt_editar">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 170, 0); 
+background-color: rgb(255, 239, 217);</string>
+         </property>
+         <property name="text">
+          <string>Editar Prospect</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="bt_voltar">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>Alt + V</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 0, 0);
+background-color: rgb(255, 238, 230); </string>
+         </property>
+         <property name="text">
+          <string>&amp;Voltar</string>
+         </property>
+         <property name="shortcut">
+          <string>Alt+V</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QTableWidget" name="tw_prospects">
+       <property name="font">
+        <font>
+         <family>Tahoma</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(85, 170, 127);</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
