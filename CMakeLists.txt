@@ -13,7 +13,7 @@ set(CMAKE_AUTORCC ON)
 # ----------------------------------------------------------
 # 2️⃣ Módulos Oficiais do Qt6
 # ----------------------------------------------------------
-find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets Sql PrintSupport Network AxContainer)
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets Sql PrintSupport Network)
 
 # ----------------------------------------------------------
 # 3️⃣ Adicionar a Biblioteca QtXlsx (Pasta Local)
