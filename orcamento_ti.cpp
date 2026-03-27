@@ -1325,34 +1325,7 @@ if(e_outlook=="CLAS"){
 }
 #endif
 
-            QString numOrcam = ui->tw_orcamentos->item(linhaO,0)->text();
-            QString at = qrycab.value("Contato").toString();
-            QString emailcli = qrycab.value("Email").toString().trimmed().toLower();
-            QString assunto_email = "Kap_Orcamento_Numero_"+ui->tw_orcamentos->item(linhaO,0)->text()+"_"+data4 ;
-            QString texto = "<h4>"+Hora+at+". "+"Como vai?<br><br>"
-                                                        "Segue em anexo o seu orçamento: "
-                                                        "Kap Orçamento Número "+numOrcam+"_"+cliente+"_"+data4+"<br><br>"
-                                                                       "Ao confirmar o pedido, por gentileza, informe se o material será destinado a: <br>"
-                                                                       "( ) Consumo próprio ou ativo imobilizado <br>"
-                                                                       "( ) Revenda e solidário <br>"
-                                                                       "( ) Industrialização <br><br>"
-                                                                       "Essa informação é imprescindível para o faturamento.</h4><br><br>";
-            ui->txt_msg->setText(texto);
-            ui->txt_msg->selectAll();
-            ui->txt_msg->copy();
-
-            QAxObject* outlook = new QAxObject("Outlook.Application",0);
-            if (!outlook) {
-                qDebug() << "Falha ao iniciar o Outlook.";
-                return ;
-            }
-
-            // Cria um novo item de e-mail
-            QAxObject* mailItem = outlook->querySubObject("CreateItem(int)", 0); // 0 = olMailItem (e-mail)
-            if (!mailItem) {
-                qDebug() << "Falha ao criar o item de e-mail.";
-                delete outlook;
-                return ;
+                           return ;
             }
 
             // Define as propriedades do e-mail
