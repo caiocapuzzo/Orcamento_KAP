@@ -1,0 +1,12 @@
+build/
+.qtcreator/
+*.o
+*.obj
+*.exe
+*.dll
+*.user
+*.autosave
+*.TMP
+CMakeFiles/
+CMakeCache.txt
+Makefile
