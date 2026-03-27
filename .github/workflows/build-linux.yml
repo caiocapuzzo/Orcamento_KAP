@@ -1,0 +1,57 @@
+name: Build Linux AppImage
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Install Qt
+      run: |
+        sudo apt update
+        sudo apt install -y qt6-base-dev qt6-tools-dev-tools cmake
+
+    - name: Build
+      run: |
+        mkdir build
+        cd build
+        cmake ..
+        make -j$(nproc)
+
+    - name: Download linuxdeploy
+      run: |
+        wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
+        chmod +x linuxdeploy-x86_64.AppImage
+
+    - name: Prepare AppDir
+      run: |
+        mkdir -p AppDir/usr/bin
+        cp build/orcamentoweb AppDir/usr/bin/
+
+    - name: Create desktop file
+      run: |
+        echo "[Desktop Entry]
+        Name=OrcamentoWeb
+        Exec=orcamentoweb
+        Icon=orcamentoweb
+        Type=Application
+        Categories=Utility;" > AppDir/orcamentoweb.desktop
+
+    - name: Build AppImage
+      run: |
+        ./linuxdeploy-x86_64.AppImage \
+        --appdir AppDir \
+        --plugin qt \
+        --output appimage
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: OrcamentoWeb-AppImage
+        path: ./*.AppImage
