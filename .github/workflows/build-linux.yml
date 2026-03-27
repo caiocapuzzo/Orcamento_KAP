@@ -21,6 +21,7 @@ jobs:
           cmake \
           wget \
           file \
+          imagemagick \
           libxcb-cursor0
 
     - name: Build project
@@ -30,7 +31,7 @@ jobs:
         cmake ..
         make -j$(nproc)
 
-    - name: Download linuxdeploy + plugin Qt
+    - name: Download linuxdeploy + Qt plugin
       run: |
         wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
         wget https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage
@@ -45,19 +46,14 @@ jobs:
 
     - name: Create desktop file
       run: |
-        cat <<EOF > AppDir/orcamentoweb.desktop
-        [Desktop Entry]
-        Name=OrcamentoWeb
-        Exec=orcamentoweb
-        Icon=orcamentoweb
-        Type=Application
-        Categories=Utility;
-        EOF
+        echo -e "[Desktop Entry]\nName=OrcamentoWeb\nExec=orcamentoweb\nIcon=orcamentoweb\nType=Application\nCategories=Utility;" > AppDir/orcamentoweb.desktop
 
-    - name: Create icon (dummy)
+    - name: Prepare icon (ICO -> PNG)
       run: |
         mkdir -p AppDir/usr/share/icons/hicolor/256x256/apps
-        touch AppDir/usr/share/icons/hicolor/256x256/apps/orcamentoweb.png
+
+        # converte seu kap.ico para png
+        convert kap.ico AppDir/usr/share/icons/hicolor/256x256/apps/orcamentoweb.png
 
     - name: Build AppImage
       run: |
